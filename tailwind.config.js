@@ -2,10 +2,14 @@
 module.exports = {
   content: [
     "./views/**/*.ejs",
+    "./node_modules/flowbite/**/*.js"
   ],
+  darkMode: 'media',
   mode: "jit",
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 };
