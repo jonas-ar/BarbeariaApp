@@ -11,6 +11,8 @@
 > Utilizar o nodemon
 > 
 > Para encerrar o servidor, use a combinação de teclas ctrl + c duas vezes
+>
+> De preferência, use a versão LTS do NodeJS
 
 ## Autores
 <table>
