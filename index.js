@@ -14,6 +14,14 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/agendamento", (req, res) => {
+  res.render("agendamento");
+});
+
+app.get("/cadastro", (req, res) => {
+  res.render("cadastro");
+})
+
 // escuta do servidor
 app.listen(PORT, () => {
   console.log(`The app start on http://localhost:${PORT}`);
