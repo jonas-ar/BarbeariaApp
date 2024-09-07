@@ -1,0 +1,83 @@
+<%-include("./partials/header")-%>
+<%-include("./partials/navbar")-%>
+<section>
+      <form class="max-w-sm mx-auto p-4" method="POST" action="#">
+        <label for="cortes" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecione o tipo de corte</label>
+        <select id="cortes"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+          <option>Social</option>
+          <option>Degradê</option>
+          <option>Corte militar</option>
+          <option>Corte com risco</option>
+          <option>Cabelo raspado</option>
+
+        </select>
+
+        <label for="barba" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deseja fazer a barba?</label>
+        <select onChange="toggleBarbaSelect(this)" id="barba"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+          <option>Não</option>
+          <option>Sim</option>
+
+        </select>
+
+        <label for="corte-barba" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Selecione o tipo de corte de barba</label>
+        <select id="corte-barba"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+          <option>Corte tradicional</option>
+          <option>Degradê</option>
+          <option>Barba arredondada</option>
+          <option>Cavanhaque</option>
+
+        </select>
+
+        <div class="mt-3 relative z-0 w-full mb-5 group">
+          <input type="text" data-mask="00:00" name="float_hora" id="float_hora"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            placeholder=" " required />
+          <label for="float_hora"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            Digite a hora</label>
+        </div>
+
+        <div class="relative max-w-sm">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+            </svg>
+          </div>
+          <input id="datepicker" data-mask="00-00-0000" datepicker datepicker-autohide datepicker
+            datepicker-format="dd-mm-yyyy" type="text"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Selecione a data">
+        </div>
+
+        <button type="submit"
+          class="text-white mt-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Agendar</button>
+      </form>
+</section>
+<script>
+  function toggleBarbaSelect(obj) {
+    let barbaSelect = document.getElementById("barba");
+    let corteBarbaSelect = document.getElementById("corte-barba");
+    
+    if (barbaSelect.value === "Não") {
+      corteBarbaSelect.disabled = true;
+      corteBarbaSelect.classList.add("cursor-not-allowed");
+    } else {
+      corteBarbaSelect.disabled = false;
+      corteBarbaSelect.classList.remove("cursor-not-allowed");
+    }
+  }
+  document.getElementById("corte-barba").disabled = true;
+  document.getElementById("corte-barba").classList.add("cursor-not-allowed");
+</script>
+<script src="./scripts/flowbite.min.js"></script>
+<script src="./scripts/jquery.mask.min.js"></script>
+<%-include("./partials/footer")-%>
