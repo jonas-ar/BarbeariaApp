@@ -22,6 +22,10 @@ app.get("/cadastro", (req, res) => {
   res.render("cadastro");
 })
 
+app.get("/login", (req, res) => {
+  res.render("login");
+})
+
 // escuta do servidor
 app.listen(PORT, () => {
   console.log(`The app start on http://localhost:${PORT}`);
