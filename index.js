@@ -1,32 +1,24 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 4000;
+const middleware = require("./utils/middleware");
+const indexRouter = require("./routes/index");
+const agendamentoRouter = require("./routes/agendamento");
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// db connection
+const mongoose = require("mongoose");
+mongoose.connect(
+  "mongodb+srv://admin:admin@cluster0.ltclo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+);
 
-// design
-app.use(express.static("public"));
-app.set("view engine", "ejs");
+// middleware
+middleware(app);
 
-// rotas
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// routes
+app.use("/", indexRouter);
+app.use("/agendamento", agendamentoRouter);
 
-app.get("/agendamento", (req, res) => {
-  res.render("agendamento");
-});
-
-app.get("/cadastro", (req, res) => {
-  res.render("cadastro");
-})
-
-app.get("/login", (req, res) => {
-  res.render("login");
-})
-
-// escuta do servidor
+// server listen
 app.listen(PORT, () => {
   console.log(`The app start on http://localhost:${PORT}`);
 });
