@@ -16,11 +16,11 @@ router.get("/", (req, res) => {
 
 // Rota para agendar
 router.post("/", (req, res) => {
-  const { tipoCorte, tipoBarba, hora, data } = req.body;
+  const { tipoCorte, tipoBarba, hora, data, tipoCorteBarba } = req.body;
 
   const novoAgendamento = new Agendamento({
     tipoCorte,
-    tipoBarba: tipoBarba !== "Não" ? tipoBarba : null, // Se não for "Não", inclui o tipo de barba
+    tipoBarba: tipoBarba !== "Não" ? tipoCorteBarba : null, // Se não for "Não", inclui o tipo de corte de barba
     hora,
     data,
     userId: req.user._id, // Associando ao usuário logado
