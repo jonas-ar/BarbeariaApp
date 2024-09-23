@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 4000;
 const middleware = require("./utils/middleware");
 const indexRouter = require("./routes/index");
 const agendamentoRouter = require("./routes/agendamento");
+const meusagendamentosRouter = require("./routes/meusagendamentos");
 
 // db connection
 const mongoose = require("mongoose");
@@ -17,6 +18,7 @@ middleware(app);
 // routes
 app.use("/", indexRouter);
 app.use("/agendamento", agendamentoRouter);
+app.use("/meusagendamentos", meusagendamentosRouter);
 
 // server listen
 app.listen(PORT, () => {
