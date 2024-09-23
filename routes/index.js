@@ -16,10 +16,11 @@ router.get("/cadastro", (req, res) => {
 });
 
 router.post("/cadastro", (req, res) => {
-  const { username, firstName, lastName, password, phone } = req.body;
+  const { username, CPF, firstName, lastName, password, phone } = req.body;
 
   const novoUsuario = new User({
     username,
+    CPF,
     firstName,
     lastName,
     password,
