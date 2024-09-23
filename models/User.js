@@ -8,6 +8,11 @@ const UserSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    CPF: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     firstName: {
       type: String,
       required: true,
