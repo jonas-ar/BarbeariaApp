@@ -57,6 +57,9 @@
         item.addEventListener('click', function() {
             const selectedValue = this.getAttribute('data-value');
             const selectedText = this.textContent.trim();
+
+            // seleciona o dropdown de busca (a caixa em si)
+            const searchDropdown = document.getElementById('search-dropdown');
             
             // atualiza apenas o texto do botão sem remover o SVG
             const dropdownButton = document.getElementById('dropdown-button');
@@ -64,8 +67,24 @@
 
             // atualiza o campo hidden com a categoria selecionada
             document.getElementById('selecionaCategoria').value = selectedValue;
+
+            // limpa o que o usuário digitou após trocar de categoria
+            $('#search-dropdown').val('');
+
+            // aplica a máscara respectiva após selecioná-la no dropdown de categoria
+            if (selectedText === 'CPF') {
+                $('#search-dropdown').mask('000.000.000-00', {reverse: true});
+            } else if (selectedText === 'Data') {
+                $('#search-dropdown').mask('00/00/0000');
+            } else if (selectedText === 'Hora') {
+                $('#search-dropdown').mask('00:00');
+            } else {
+                $('#search-dropdown').unmask();
+            }
         });
     });
 </script>
+<script src="./scripts/jquery-3.7.1.min.js"></script>
+<script src="./scripts/jquery.mask.min.js"></script>
 <script src="./scripts/flowbite.min.js"></script>
 <%-include("./partials/footer")-%>
