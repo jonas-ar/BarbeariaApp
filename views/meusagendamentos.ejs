@@ -2,43 +2,41 @@
 <%-include("./partials/navbar")-%>
 <section>
 
-    <form class="max-w-lg mx-auto mt-5" method="POST" action="#"> <!-- trocar o action -->
-        <div class="flex">
-            <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Seu e-mail</label>
-            <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">
-                Todas as categorias <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-      </svg></button>
-            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
-                <li>
-                    <button type="button" name="BuscaEmail" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                        E-mail</button>
-                </li>
-                <li>
-                    <button type="button" name="buscaCorteCabelo" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                        Corte de cabelo</button>
-                </li>
-                <li>
-                    <button type="button" name="buscaCorteBarba" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                        Corte de barba</button>
-                </li>
-                <li>
-                    <button type="button" name="buscaHora" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                        Hora</button>
-                </li>
-                <li>
-                    <button type="button" name="buscaData" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                        Data</button>
-                </li>
-                <li>
-                    <button type="button" name="buscaData" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                        CPF</button>
-                </li>
+    <form class="max-w-lg mx-auto mt-5" method="POST" action="/buscarAgendamentos">
+        <div class="flex items-center space-x-2">
+            <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200">
+                Todas as categorias 
+                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+            </button>
+            
+            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdown-button">
+                    <li>
+                        <button type="button" name="BuscaEmail" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-value="E-mail">E-mail</button>
+                    </li>
+                    <li>
+                        <button type="button" name="buscaCorteCabelo" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-value="Corte de cabelo">Corte de cabelo</button>
+                    </li>
+                    <li>
+                        <button type="button" name="buscaCorteBarba" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-value="Corte de barba">Corte de barba</button>
+                    </li>
+                    <li>
+                        <button type="button" name="buscaHora" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-value="Hora">Hora</button>
+                    </li>
+                    <li>
+                        <button type="button" name="buscaData" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-value="Data">Data</button>
+                    </li>
+                    <li>
+                        <button type="button" name="buscaData" class="dropdown-item inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-value="CPF">CPF</button>
+                    </li>
                 </ul>
             </div>
+        
             <div class="relative w-full">
-                <input type="search" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Procurar por e-mail, tipo de corte de cabelo..." required />
+                <input type="search" id="searchCustomText" name="searchCustomText" class="block p-2.5 w-full text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Procurar por e-mail, tipo de corte de cabelo..." required />
+                
                 <button type="submit" class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
@@ -46,9 +44,39 @@
                     <span class="sr-only">Procurar</span>
                 </button>
             </div>
+        
+            <input type="hidden" id="selecionaCategoria" name="categoria" value="todas">
         </div>
-        <input type="hidden" id="selecionaCategoria" name="categoria" value="todas">
+        
     </form>
+
+    <!-- Display search results below the search form -->
+    <% if (typeof results !== 'undefined' && results.length > 0) { %>
+        <div class="mt-5 p-4 border-8 divide-y">
+            <h2 class="text-xl font-semibold">Resultados da busca</h2>
+            <ul class="list-disc pl-5">
+                <% results.forEach(result => { %>
+                    <li>
+                        <p><strong>E-mail:</strong> <%= result.userId.username %></p>
+                        <p><strong>Tipo de Corte:</strong> <%= result.tipoCorte %></p>
+                        <% if (result.tipoBarba) { %>
+                            <p><strong>Tipo de Barba:</strong> <%= result.tipoBarba %></p>
+                        <% } %>
+                        <p><strong>Hora:</strong> <%= result.hora %></p>
+                        <p><strong>Data:</strong> <%= result.data %></p>
+                        <br>
+                        <hr>
+                        <br>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+    <% } else if (typeof results !== 'undefined') { %>
+        <!-- No results found -->
+        <div class="mt-5">
+            <p>Nenhum resultado foi encontrado. Ajuste os critérios de busca ou procure por outro termo.</p>
+        </div>
+    <% } %>
 
 </section>
 <!--script para mudar o dropdown baseando-se no evento de click do mouse -->
