@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Agendamento = require("../models/Agendamento");
+const sendEmail = require('../utils/sendEmail');
 
 // Página de agendamentos
 router.get("/", (req, res) => {
@@ -28,8 +29,15 @@ router.post("/", (req, res) => {
 
   novoAgendamento
     .save()
-    .then(() => {
-      res.redirect("/agendamento"); // Redireciona para a página de agendamentos
+    .then(async () => {
+      // Enviar e-mail de confirmação
+      const userEmail = req.user.username; // Assumindo que o e-mail está no campo username
+      const subject = 'Confirmação de Agendamento';
+      const message = `Seu agendamento para ${tipoCorte} foi confirmado para o dia ${data} às ${hora}.`;
+
+      await sendEmail(userEmail, subject, message);
+      
+      res.redirect("/agendamento");
     })
     .catch((err) => {
       console.error(err);
