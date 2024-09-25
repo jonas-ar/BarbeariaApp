@@ -1,10 +1,48 @@
-<%-include("./partials/header")-%>
-<%-include("./partials/navbar")-%>
+<%- include("./partials/header") %>
+<%- include("./partials/navbar") %>
+
 <section>
   <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-center p-8">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+    Calendário de Agendamentos
+  </h1>
 
-    <div id='calendar'></div>
+  <!-- Div onde o calendário será renderizado -->
+  <div id="calendar" class="p-4 bg-white shadow-lg rounded-lg"></div>
 </section>
-<script src="./scripts/flowbite.min.js"></script>
-<%-include("./partials/footer")-%>
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/main.min.js'></script>
+
+<script>
+  const agendamentos = <%- JSON.stringify(agendamentos) %>;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      locale: 'pt-br',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      events: agendamentos.map(agendamento => {
+        const [day, month, year] = agendamento.data.split('-');
+        const formattedDate = `${year}-${month}-${day}`;
+        const dateTime = `${formattedDate}T${agendamento.hora}:00`;
+
+        return {
+          title: agendamento.tipoCorte, // Apenas o tipo de corte
+          start: dateTime
+        };
+      }),
+      eventTimeFormat: { // Formatação do horário exibido
+        hour: '2-digit', // Exibe horas em 2 dígitos
+        minute: '2-digit', // Exibe minutos em 2 dígitos
+        meridiem: false // Não exibe AM/PM
+      }
+    });
+    calendar.render();
+  });
+</script>
+
+<%- include("./partials/footer") %>

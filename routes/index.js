@@ -1,13 +1,29 @@
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
-const User = require("../models/User");
 
-router.get("/", (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render("index");
-  } else {
-    res.redirect("/login");
+const User = require("../models/User");
+const Agendamento = require("../models/Agendamento");
+
+router.get('/', async (req, res) => {
+  if (!req.isAuthenticated()) {
+    // Se o usuário não estiver autenticado, redireciona para a página de login
+    return res.redirect('/login');
+  }
+
+  try {
+    // Recuperar o ID do usuário logado pelo Passport.js
+    const userId = req.user._id;
+
+    // Consultar agendamentos do usuário logado no banco de dados
+    const agendamentos = await Agendamento.find({ userId: userId });
+    // console.log(agendamentos)
+
+    // Renderiza a página index com os agendamentos do usuário
+    res.render('index', { agendamentos });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar agendamentos");
   }
 });
 
