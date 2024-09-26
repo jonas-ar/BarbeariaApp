@@ -4,7 +4,7 @@ module.exports = {
     "./views/**/*.ejs",
     "./node_modules/flowbite/**/*.js"
   ],
-  darkMode: 'media',
+  darkMode: 'false',
   mode: "jit",
   theme: {
     extend: {},
