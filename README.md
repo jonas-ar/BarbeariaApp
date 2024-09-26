@@ -1,3 +1,19 @@
+# Segundo trabalho de Tecnologias Web 2
+
+## Execução do programa
+```
+  npm install
+  npm start
+```
+
+
+> [!NOTE]  
+> Utilizar o nodemon
+> 
+> Para encerrar o servidor, use a combinação de teclas ctrl + c duas vezes
+>
+> De preferência, use a versão LTS do NodeJS
+
 ## Autores
 <table>
   <tr>

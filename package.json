@@ -1,0 +1,34 @@
+{
+  "name": "barbeariaapp",
+  "version": "1.0.0",
+  "description": "<table>\r   <tr>\r     <td align=\"center\">\r       <a href=\"https://github.com/RanieryAV\" target=\"_blank\">\r         <img loading=\"lazy\" src=\"https://avatars.githubusercontent.com/u/58216614?v=4\" width=115 >\r         <br>\r         <sub>Raniery Alves</sub>\r       </a>\r     </td>\r     <td align=\"center\">\r       <a href=\"https://github.com/MarcosVRLima\" target=\"_blank\">\r         <img loading=\"lazy\" src=\"https://avatars.githubusercontent.com/u/67925618?v=4\" width=115 >\r         <br>\r         <sub>Marcos Vinicius Rodrigues</sub>\r       </a>\r     </td>\r     <td align=\"center\">\r       <a href=\"https://github.com/RafaelBHMendes\" target=\"_blank\">\r         <img loading=\"lazy\" src=\"https://avatars.githubusercontent.com/u/40126333?v=4\" width=115 >\r         <br>\r         <sub>Rafael Mendes</sub>\r       </a>\r     </td>\r     <td align=\"center\">\r       <a href=\"https://github.com/thiagovale\" target=\"_blank\">\r         <img loading=\"lazy\" src=\"https://avatars.githubusercontent.com/u/61766814?v=4\" width=115 >\r         <br>\r         <sub>Thiago Vale</sub>\r       </a>\r     </td>\r     <td align=\"center\">\r       <a href=\"https://github.com/jonas-ar\" target=\"_blank\">\r         <img loading=\"lazy\" src=\"https://avatars.githubusercontent.com/u/96082984?v=4\" width=115 >\r         <br>\r         <sub>Jonas Fontenele</sub>\r       </a>\r     </td>\r   </tr>\r </table>",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"nodemon index.js\" \"npm:style\"",
+    "style": "postcss ./public/styles/main.css -o ./public/styles/style.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.6.0",
+    "nodemailer": "^6.9.15",
+    "nodemon": "^3.1.4",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "postcss-cli": "^11.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^8.2.2",
+    "flowbite": "^2.5.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.10"
+  }
+}
